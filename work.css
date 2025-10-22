@@ -1,0 +1,479 @@
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+
+        body{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #252525;
+            color: aliceblue;
+        }
+
+
+        header{
+            padding:20px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav ul li{
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        header h2{
+            animation: slideheader 1s ease;    
+        }
+        @keyframes slideheader{
+            0%{transform:translateX(-80px);
+                opacity:0
+            }
+            100%{transform: translateX(0);
+            opacity:1;
+        }
+        }
+
+        /* Base style for nav links */
+        nav ul a{
+            text-decoration: none;
+            color: aliceblue;
+            padding-bottom: 5px;
+            overflow: hidden;
+            position: relative;
+            animation: slideupnav 1s ease-in;
+        }
+
+        /* Style for the currently active link */
+        nav ul a.active-link li {
+            color: #5031ff; /* Highlight color for the active page */
+        }
+
+        /* Hide the hover effect for the active link, or style it differently if desired */
+        nav ul a.active-link::after {
+            left: 0; /* Make the underline visible for the active link */
+            background-color: #5031ff;
+        }
+        nav ul a.active-link:hover::after {
+            left: 0; /* Keep it fixed */
+        }
+        /* End Active Link Styles */
+
+
+        @keyframes slideupnav{
+            0%{
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100%{
+                opacity: 1;
+                transform: translatey(0);
+            }
+        }
+
+        nav ul a::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: -100%;
+            background-color: #5031ff;
+            height: 2px;
+            transition: left 0.3s ease-in-out;
+        }
+        nav ul a:not(.active-link):hover::after{   
+            left: 0; 
+        }
+
+        nav ul{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 50px;
+        }
+
+        main{
+            /* The main styling for the home page. This will be overridden by .works-main */
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            padding: 0 100px;
+        }
+
+        .leftside{
+            margin-top: 80px;
+            width: 50%;
+            height: 75%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .leftsidecontent{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .leftsidewords h1{
+            font-size: 55px;
+        }
+
+        .leftsidewords{
+            animation: slideright 2s ease;
+        }
+        @keyframes slideright{
+            0%{
+                transform: translateX(-50px);
+                opacity: 0.1;
+            }
+            75%{
+                opacity: 0.5;
+            }
+            100%{
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .leftsidecontent button{
+            width: 170px;
+            height: 50px;
+            border: none;
+            border-radius: 15px;
+            background-color: #5031ff;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+            animation: eased 1s ease-in,pulse-shadow 1s infinite 1.5s alternate ;
+            animation-fill-mode: forwards;
+            color: aliceblue; /* Added for consistency */
+        }
+
+        @keyframes pulse-shadow {
+          0% {
+            transform: translateY(5px);
+          }
+         
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        @keyframes eased{
+            0%{
+                opacity: 0;
+                transform:scale(0.90);
+            }
+            100%{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .leftsidecontent button:hover{
+            transform: scale(1.05) translateY(-5px);
+            background-color: #6145ff;
+            animation: none;
+        }
+
+        .leftsidecontent button:active{
+            background-color: transparent;
+            border: 2px solid #5031ff;
+            transform: scale(0.95);
+            color: #5031ff; /* Text visible on click */
+        }
+        .leftsidelink{
+            display: flex;
+            align-items: center;
+            justify-content:flex-start;
+            width: 100%;
+            gap: 20px;
+        }
+        .leftsidelink i{
+            font-size: 25px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .leftsidelink i:hover {
+            color: #5031ff;
+        }
+
+        .rightside{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 70px;
+        }
+
+        .rightside .picturebox{
+            /* Note: Using a fallback image for better reliability */
+            background-image: url(https://placehold.co/400x400/5031ff/FFFFFF?text=Ratul); 
+            background-size: cover;
+            width:400px;
+            height:400px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #3520ab;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            animation: slideleft 2s ease-in;
+        }
+
+        @keyframes slideleft{
+            0%{
+                opacity:0
+            }
+
+            100%{
+                opacity: 1;
+            }
+        }
+        .rightside .picturebox:hover{
+            transform: scale(1.02);
+            box-shadow: 0 0 30px #5031ff;
+        }
+
+
+        /* ================= WORKS PAGE STYLES ================= */
+
+        /* Specific main styling for the works page to override home page flex/height */
+        .works-main {
+            display: block; /* Override flex */
+            padding: 50px 100px; 
+            min-height: calc(100vh - 80px); 
+            width: 100%;
+        }
+
+        .works-hero {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: slideupnav 1s ease-in; /* Reusing existing animation */
+        }
+
+        .works-title {
+            font-size: 55px;
+            color: #5031ff; /* Accent color */
+            margin-bottom: 10px;
+        }
+
+        .works-subtitle {
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        /* Project Grid Layout */
+        .work-grid {
+            display: grid;
+            /* Responsive grid: columns adjust automatically, minimum size 300px */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding-bottom: 50px;
+        }
+
+        /* Project Card Styles */
+        .work-card {
+            background-color: #313131; /* Slightly lighter background for the card */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease , background 0.10s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(80, 49, 255, 0.5);
+            background: rgba(56, 56, 56, 0.2);
+            backdrop-filter:  blur(10px);
+        }
+
+        .work-image {
+            width: 100%;
+            height:250px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            font-weight: bold;
+            color: #5031ff;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .work-card h3 {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+        .work-card:hover h3{
+            color: rgb(56, 56, 56, 0.5);
+
+        }
+        .view-link {
+            text-decoration: none;
+            color: #5031ff;
+            font-weight: bold;
+            margin-top: auto; /* Pushes the link to the bottom of the card content */
+            align-self: flex-start;
+            transition: color 0.3s ease;
+            margin: 20px 20px;
+            position: absolute;
+            left: 1%;
+            bottom: 1%;
+            visibility: hidden;
+        }
+        @keyframes sliding{
+            0%{
+                transform:translate3d(-40px,30px,-40px);
+                visibility: visible;
+            }
+            100%{
+                transform: translate(0);
+                visibility: visible;
+            }
+        }
+
+        .view-link i {
+            margin-left: 5px;
+            transition: margin-left 0.3s ease, color 0.3s ease;
+        }
+
+        .work-card:hover .view-link {
+            color: #31ff9c; /* Subtle color change on card hover */
+            animation: sliding 0.55s ease;
+            visibility: visible;
+        }
+
+        .work-card:hover .view-link i {
+            margin-left: 10px;
+        }
+
+
+        /* ================= RESPONSIVE DESIGN ================= */
+
+        /* For tablets and small laptops (existing styles) */
+        @media (max-width: 1024px) {
+            header {
+                padding: 20px 40px;
+            }
+
+            nav ul {
+                gap: 30px;
+            }
+
+            main {
+                padding: 0 40px;
+            }
+
+            /* Works page specific adjustments */
+            .works-main {
+                padding: 50px 40px;
+            }
+
+            .leftsidewords h1 {
+                font-size: 40px;
+            }
+
+            .rightside .picturebox {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        /* For mobile devices (existing styles + works page) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column-reverse;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            main {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .leftside {
+                width: 100%;
+                align-items: center;
+                margin-top: 40px;
+            }
+
+            .leftsidecontent {
+                align-items: center;
+                gap: 30px;
+            }
+
+            .leftsidewords h1 {
+                font-size: 32px;
+            }
+
+            .leftsidelink {
+                justify-content: center;
+            }
+
+            .rightside {
+                padding-top: 40px;
+            }
+
+            .rightside .picturebox {
+                width: 250px;
+                height: 250px;
+            }
+
+            /* Works page specific adjustments */
+            .works-main {
+                padding: 30px 20px;
+            }
+
+            .works-title {
+                font-size: 40px;
+            }
+
+            .works-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        /* For very small devices (phones under 480px) */
+        @media (max-width: 480px) {
+            .leftsidewords h1 {
+                font-size: 24px;
+            }
+
+            .leftsidecontent button {
+                width: 140px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .rightside .picturebox {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        .work-card{
+            border: 1px solid #6145ff;
+            background:rgba(39, 38, 38, 0.2);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+        }
